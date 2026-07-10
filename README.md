@@ -43,3 +43,16 @@ Como solicitado, não há login. As políticas do Supabase permitem atualizaçã
 ## Correção de configuração PostCSS externa
 
 Esta versão força uma configuração PostCSS local vazia. Assim, o Vite não carrega acidentalmente arquivos `postcss.config.js` que estejam em pastas superiores, como a pasta `Downloads`.
+
+
+## Novidades da V2
+
+- Os 20 clubes aparecem juntos na tela da live, sem barra de rolagem.
+- Cada clube possui um presente identificado ao lado do escudo.
+- Exemplo: Grêmio usa o presente Rosa (🌹).
+- O painel de controle também mostra qual presente corresponde a cada clube.
+- Foi incluído o Bragantino para completar os 20 clubes.
+
+## V3 — duas colunas e presentes reais
+
+A tela `/ranking` mostra 10 clubes à esquerda e 10 à direita, sem rolagem. Os 20 presentes enviados pelo usuário ficam em `public/gifts` e aparecem no ranking e no painel de controle. O Grêmio está associado à Rosa.

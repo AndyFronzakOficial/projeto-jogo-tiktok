@@ -55,7 +55,8 @@ insert into public.clubs (id, name, short_name, points, color) values
 ('ceara', 'Ceará', 'CEA', 0, '#111827'),
 ('fluminense', 'Fluminense', 'FLU', 0, '#7f1d1d'),
 ('fortaleza', 'Fortaleza', 'FOR', 0, '#1d4ed8'),
-('sport', 'Sport', 'SPT', 0, '#b91c1c')
+('sport', 'Sport', 'SPT', 0, '#b91c1c'),
+('bragantino', 'Bragantino', 'RBB', 0, '#dc2626')
 on conflict (id) do update set
   name = excluded.name,
   short_name = excluded.short_name,
