@@ -59,6 +59,7 @@ button { cursor: pointer; }
 .control-club-card { position: relative; display: grid; grid-template-columns: 62px 1fr; gap: 14px; align-items: center; padding: 16px; border: 1px solid #202b43; border-radius: 18px; background: linear-gradient(145deg, rgba(17,24,39,.96), rgba(8,15,31,.96)); box-shadow: 0 12px 28px rgba(0,0,0,.18); }
 .rank-number { position: absolute; top: 10px; right: 12px; color: #64748b; font-weight: 900; }
 .control-club-info h2 { margin: 0; font-size: 19px; }
+.control-club-info { margin: 0 45; }
 .control-club-info strong { color: #7dd3fc; font-size: 14px; }
 .quick-actions { grid-column: 1 / -1; display: grid; grid-template-columns: 48px 1fr 60px; gap: 8px; }
 .quick-actions button { min-height: 48px; border: 0; border-radius: 12px; color: white; font-weight: 900; }
