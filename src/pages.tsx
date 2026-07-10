@@ -3,6 +3,7 @@ import { Crown, ExternalLink, Minus, Plus, RefreshCcw, RotateCcw, Trophy } from 
 import { ClubBadge } from './components/ClubBadge'
 import { addPoint, getClubs, resetPoints, restoreDemo } from './lib/clubs'
 import { hasSupabase, supabase } from './lib/supabase'
+import { getClubGift } from './lib/gifts'
 import type { Club } from './types'
 
 function useClubs() {
@@ -51,6 +52,7 @@ export function RankingPage() {
   const sorted = useMemo(() => [...clubs].sort((a, b) => b.points - a.points || a.name.localeCompare(b.name)), [clubs])
   const top = sorted.slice(0, 3)
   const max = Math.max(1, ...sorted.map((club) => club.points))
+  const columns = [sorted.slice(0, 10), sorted.slice(10, 20)]
 
   return (
     <main className="ranking-shell">
@@ -79,15 +81,24 @@ export function RankingPage() {
         {loading && <div className="state-message">Carregando ranking...</div>}
         {error && <div className="state-message error">{error}</div>}
 
-        <div className="ranking-list">
-          {sorted.map((club, index) => (
-            <article className="ranking-row" key={club.id}>
-              <span className="position">{index + 1}º</span>
-              <div className="progress-track"><div className="progress-fill" style={{ width: `${Math.max(5, (club.points / max) * 100)}%`, background: club.color }} /></div>
-              <ClubBadge club={club} />
-              <strong className="points">{club.points}</strong>
-              <span className="club-name">{club.name}</span>
-            </article>
+        <div className="ranking-list ranking-columns">
+          {columns.map((column, columnIndex) => (
+            <div className="ranking-column" key={columnIndex}>
+              {column.map((club, rowIndex) => {
+                const index = columnIndex * 10 + rowIndex
+                const gift = getClubGift(club.id)
+                return (
+                  <article className="ranking-row" key={club.id}>
+                    <span className="position">{index + 1}º</span>
+                    <div className="progress-track"><div className="progress-fill" style={{ width: `${Math.max(5, (club.points / max) * 100)}%`, background: club.color }} /></div>
+                    <ClubBadge club={club} />
+                    <img className="gift-image" src={gift.image} alt={gift.name} title={gift.name} />
+                    <strong className="points">{club.points}</strong>
+                    <span className="club-name">{club.name}</span>
+                  </article>
+                )
+              })}
+            </div>
           ))}
         </div>
 
@@ -152,11 +163,14 @@ export function ControlPage() {
         {filtered.map((club, index) => (
           <article className="control-club-card" key={club.id}>
             <span className="rank-number">#{index + 1}</span>
-            <ClubBadge club={club} size="lg" />
-            <div className="control-club-info"><h2>{club.name}</h2><strong>{club.points} pontos</strong></div>
+            <div className="control-club-visual">
+              <ClubBadge club={club} size="lg" />
+              <span className="control-gift-icon" title={getClubGift(club.id).name}><img src={getClubGift(club.id).image} alt={getClubGift(club.id).name} /></span>
+            </div>
+            <div className="control-club-info"><h2>{club.name}</h2><strong>{club.points} pontos</strong><small>{getClubGift(club.id).name} = +1 ponto</small></div>
             <div className="quick-actions">
               <button className="minus-button" disabled={busyId === club.id || club.points === 0} onClick={() => void change(club.id, -1)}><Minus size={22} /></button>
-              <button className="point-button" disabled={busyId === club.id} onClick={() => void change(club.id, 1)}><Plus size={24} /> 1 ponto</button>
+              <button className="point-button" disabled={busyId === club.id} onClick={() => void change(club.id, 1)}><img src={getClubGift(club.id).image} alt="" /><Plus size={20} /> 1 ponto</button>
               <button className="bonus-button" disabled={busyId === club.id} onClick={() => void change(club.id, 5)}>+5</button>
             </div>
           </article>

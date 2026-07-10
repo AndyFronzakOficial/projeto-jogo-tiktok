@@ -20,6 +20,7 @@ export const initialClubs: Club[] = [
   { id: 'fluminense', name: 'Fluminense', short_name: 'FLU', points: 0, color: '#7f1d1d', logo_url: null },
   { id: 'fortaleza', name: 'Fortaleza', short_name: 'FOR', points: 0, color: '#1d4ed8', logo_url: null },
   { id: 'sport', name: 'Sport', short_name: 'SPT', points: 0, color: '#b91c1c', logo_url: null },
+  { id: 'bragantino', name: 'Bragantino', short_name: 'RBB', points: 0, color: '#dc2626', logo_url: null },
 ]
 
 const STORAGE_KEY = 'ranking-live-clubes-v1'

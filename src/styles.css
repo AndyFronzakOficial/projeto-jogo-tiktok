@@ -226,7 +226,6 @@ button {
   letter-spacing: .08em;
   text-transform: uppercase;
   color: #cbd5e1;
-  margin: 0 -50px;
 }
 
 .club-badge {
@@ -412,6 +411,10 @@ button {
   color: #64748b;
   font-weight: 900;
 }
+.control-club-info {
+  margin: 0 45px;
+  
+}
 
 .control-club-info h2 {
   margin: 0;
@@ -553,5 +556,315 @@ button {
 
   .operator-tip {
     align-items: flex-start;
+  }
+}
+
+/* V2: os 20 clubes sempre cabem na tela da live */
+.ranking-shell {
+  height: 100dvh;
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.ranking-card {
+  width: min(100%, 780px);
+  height: 100dvh;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(8px, 1.4vh, 16px) 18px 8px;
+  border-radius: 0;
+}
+
+.ranking-header {
+  flex: 0 0 auto;
+}
+
+.title-row h1 {
+  font-size: clamp(18px, 3.2vh, 30px);
+}
+
+.title-row svg {
+  width: clamp(20px, 2.8vh, 28px);
+  height: clamp(20px, 2.8vh, 28px);
+}
+
+.podium {
+  margin-top: clamp(5px, .8vh, 10px);
+  gap: 8px;
+}
+
+.podium-card {
+  min-height: clamp(54px, 8vh, 78px);
+  padding: 5px 8px;
+  border-radius: 14px;
+}
+
+.podium-card .club-badge-lg {
+  width: clamp(34px, 5vh, 48px);
+  height: clamp(38px, 5.8vh, 54px);
+}
+
+.medal {
+  font-size: clamp(17px, 2.6vh, 24px);
+}
+
+.podium-card strong {
+  font-size: clamp(18px, 3vh, 30px);
+}
+
+.ranking-title {
+  flex: 0 0 auto;
+  margin: clamp(4px, .7vh, 8px) 0;
+  gap: 12px;
+}
+
+.ranking-title h2 {
+  font-size: clamp(18px, 3vh, 30px);
+}
+
+.ranking-list {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: repeat(20, minmax(0, 1fr));
+  gap: clamp(1px, .25vh, 3px);
+}
+
+.ranking-row {
+  min-height: 0;
+  height: 100%;
+  grid-template-columns: 34px 34px 34px 38px 64px 1fr;
+  padding: 0 7px;
+  border-radius: 8px;
+}
+
+.progress-track {
+  left: 38px;
+  right: 8px;
+  height: 62%;
+}
+
+.position {
+  font-size: clamp(9px, 1.45vh, 13px);
+}
+
+.club-badge-md {
+  width: clamp(22px, 3.3vh, 31px);
+  height: clamp(24px, 3.7vh, 35px);
+  border-width: 2px;
+  border-radius: 8px 8px 10px 10px;
+}
+
+.club-badge span {
+  font-size: clamp(6px, .9vh, 8px);
+}
+
+.gift-icon {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  font-size: clamp(14px, 2.2vh, 21px);
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, .35));
+}
+
+.points {
+  font-size: clamp(14px, 2.4vh, 24px);
+}
+
+.club-name {
+  font-size: clamp(8px, 1.45vh, 13px);
+  letter-spacing: .04em;
+}
+
+.live-footer {
+  flex: 0 0 auto;
+  margin-top: 4px;
+  font-size: clamp(8px, 1.2vh, 11px);
+}
+
+.live-dot {
+  width: 7px;
+  height: 7px;
+}
+
+.control-club-visual {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.control-gift-icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 13px;
+  font-size: 27px;
+  background: rgba(255, 255, 255, .08);
+  border: 1px solid rgba(255, 255, 255, .1);
+  box-shadow: inset 0 0 16px rgba(255, 255, 255, .04);
+}
+
+.control-club-info small {
+  display: block;
+  margin-top: 4px;
+  color: #cbd5e1;
+  font-size: 11px;
+}
+
+.point-button span {
+  font-size: 20px;
+}
+
+@media (max-height: 760px) {
+  .ranking-card {
+    padding-top: 5px;
+    padding-bottom: 4px;
+  }
+
+  .podium-card {
+    min-height: 48px;
+  }
+
+  .ranking-title {
+    margin: 2px 0;
+  }
+
+  .live-footer {
+    margin-top: 2px;
+  }
+}
+
+@media (max-width: 680px) {
+  .ranking-card {
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+
+  .ranking-row {
+    grid-template-columns: 29px 29px 29px 32px 52px 1fr;
+    padding: 0 4px;
+  }
+
+  .progress-track {
+    left: 31px;
+  }
+}
+
+/* V3: ranking em duas colunas (10 clubes de cada lado) e presentes reais do TikTok */
+.ranking-card {
+  width: min(100%, 1180px);
+}
+
+.ranking-columns {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: none;
+  gap: 10px;
+}
+
+.ranking-column {
+  min-height: 0;
+  display: grid;
+  grid-template-rows: repeat(10, minmax(0, 1fr));
+  gap: clamp(3px, .55vh, 7px);
+}
+
+.ranking-row {
+  grid-template-columns: 38px 40px 48px 66px 1fr;
+  min-height: 0;
+  padding: 1px 8px;
+  border-radius: 11px;
+}
+
+.ranking-row .progress-track {
+  left: 43px;
+  height: 66%;
+}
+
+.ranking-row .club-badge-md {
+  width: clamp(30px, 4.8vh, 43px);
+  height: clamp(34px, 5.5vh, 49px);
+}
+
+.gift-image {
+  position: relative;
+  z-index: 2;
+  width: clamp(34px, 5.4vh, 50px);
+  height: clamp(34px, 5.4vh, 50px);
+  object-fit: contain;
+  filter: drop-shadow(0 3px 7px rgba(0, 0, 0, .55));
+}
+
+.ranking-row .position {
+  font-size: clamp(11px, 1.65vh, 15px);
+}
+
+.ranking-row .points {
+  font-size: clamp(18px, 3.1vh, 30px);
+}
+
+.ranking-row .club-name {
+  font-size: clamp(9px, 1.55vh, 14px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.control-gift-icon img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+.point-button img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+@media (max-width: 760px) {
+  .ranking-card {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .ranking-columns {
+    gap: 4px;
+  }
+
+  .ranking-row {
+    grid-template-columns: 27px 29px 34px 47px 1fr;
+    padding: 0 3px;
+  }
+
+  .ranking-row .progress-track {
+    left: 29px;
+    right: 3px;
+  }
+
+  .gift-image {
+    width: clamp(26px, 4.4vh, 36px);
+    height: clamp(26px, 4.4vh, 36px);
+  }
+
+  .ranking-row .club-badge-md {
+    width: clamp(23px, 3.8vh, 31px);
+    height: clamp(26px, 4.3vh, 35px);
+  }
+
+  .ranking-row .points {
+    font-size: clamp(13px, 2.35vh, 20px);
+  }
+
+  .ranking-row .club-name {
+    font-size: clamp(7px, 1.15vh, 10px);
+    letter-spacing: 0;
+  }
+
+  .ranking-row .position {
+    font-size: clamp(8px, 1.25vh, 11px);
   }
 }
