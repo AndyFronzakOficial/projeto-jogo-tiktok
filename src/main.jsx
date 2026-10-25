@@ -65,7 +65,7 @@ function App() {
       </div>
       <div className="versus-center"><span>VS</span><div className="bolt">⚡</div></div>
       <div className="versus-side white-side">
-        <div className="rose">🤍🌹</div>
+        <img className="white-rose-hero" src="/white-rose.png" alt="Rosa branca" />
         <span className="side-label">ROSA BRANCA</span>
         <h2>BOLSONARO</h2>
         <div className="score">{bolsonaro}</div>
@@ -105,7 +105,7 @@ function App() {
         <span className="gift-emoji">🌹</span><span className="gift-text"><b>ROSA VERMELHA</b><small>+{redPoints} {redPoints === 1 ? "ponto" : "pontos"} para Lula</small></span><span className="add-circle"><Plus size={22}/></span>
       </button>
       <button className="gift-button white-gift" onClick={() => add("bolsonaro", whitePoints, "Rosa branca")}>
-        <span className="gift-emoji">🤍🌹</span><span className="gift-text"><b>ROSA BRANCA</b><small>+{whitePoints} {whitePoints === 1 ? "ponto" : "pontos"} para Bolsonaro</small></span><span className="add-circle"><Plus size={22}/></span>
+        <img className="white-rose-gift" src="/white-rose.png" alt="Rosa branca" /><span className="gift-text"><b>ROSA BRANCA</b><small>+{whitePoints} {whitePoints === 1 ? "ponto" : "pontos"} para Bolsonaro</small></span><span className="add-circle"><Plus size={22}/></span>
       </button>
     </section>
 
